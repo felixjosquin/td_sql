@@ -31,7 +31,9 @@ INSERT INTO `Eleve` (`elevID`, `nom`, `age`, `ville`, `classe_id`) VALUES
 (19, 'Payet', 21, 'Marseille', 5),
 (20, 'Neymar', 23,'Rio', 2),
 (21, 'Lucas', 20, 'Coulgens', 4),
-(22, 'Firmin', 22,'Lyon', 3);
+(22, 'Firmin', 22,'Lyon', 3),
+(23, 'Felix', 21, 'Trecon',2),
+(24, 'Lucie', 20, 'Montcuq', 1);
 
 DROP TABLE IF EXISTS `Classes`;
 CREATE TABLE IF NOT EXISTS `Classes` (
