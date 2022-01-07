@@ -23,7 +23,6 @@ GROUP BY Repartition.actID
 ORDER BY COUNT(Repartition.actID) DESC, Activite.actID ASC;
 
 
-
 --  "------------------ QUESTION 11 ------------------"
 
 SELECT Classes.enseignant, COUNT(Eleve.elevID) AS Nb_eleve
@@ -46,12 +45,12 @@ GROUP BY Activite.theme;
 --  "------------------ QUESTION 13 ------------------"
 SELECT Activite.theme,COUNT(Eleve.elevID) AS nb_eleve,GROUP_CONCAT(DISTINCT(Eleve.ville)) AS villes
 FROM Repartition,Activite,Eleve WHERE Activite.actID=Repartition.actID AND Repartition.elevID=Eleve.elevID 
-GROUP BY Activite.theme,Activite.actID
+GROUP BY Activite.theme,Activite.actID,Eleve.ville
 HAVING CONCAT(Activite.actID,COUNT(Eleve.elevID)) IN
     (SELECT CONCAT(Activite.actID,MAX(B.nb_student))
     FROM (SELECT Activite.actID,COUNT(Eleve.elevID) AS nb_student
-        FROM Repartition,Activite,Eleve WHERE Activite.actID=Repartition.actID AND Repartition.elevID=Eleve.elevID 
-        GROUP BY Activite.actID) B,
+         FROM Repartition,Activite,Eleve WHERE Activite.actID=Repartition.actID AND Repartition.elevID=Eleve.elevID 
+         GROUP BY Activite.actID,Eleve.ville) B,
     Activite WHERE Activite.actID=B.actID
     GROUP BY Activite.actID)
 ORDER BY Activite.theme;
