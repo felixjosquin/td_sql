@@ -73,7 +73,7 @@ INSERT INTO `Repartition` (`elevID`, `actID`) VALUES
 (7,7),
 (19,3),
 (18,7),
-(4,3),
+(4,6),
 (13,2),
 (21,5),
 (18,6),

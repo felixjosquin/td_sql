@@ -15,6 +15,17 @@ CREATE TABLE IF NOT EXISTS `Classes` (
   PRIMARY KEY (`classe_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+
+DROP TABLE IF EXISTS `Activite`;
+CREATE TABLE IF NOT EXISTS `Activite` (
+  `actID` int(10) NOT NULL,
+  `lieu` varchar(100) NOT NULL,
+  `bus` int(10) NOT NULL,
+  `theme` varchar(100) NOT NULL,
+  `jour` int(10) NOT NULL,
+  PRIMARY KEY (`actID`)
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `Repartition`;
 CREATE TABLE IF NOT EXISTS `Repartition` (
   `elevID` int(10) NOT NULL,
