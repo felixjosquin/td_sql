@@ -39,7 +39,7 @@ INSERT INTO `Activites` (`ActID`, `Lieu`,`Bus`,`Theme`,`Jour`) VALUES
 (5,'Epinal',5,'golf',1),
 (6,'Marseille',3,'ping-pong',2),
 (7,'Paris',4,'gym',1),
-(8,'Epinal',2,'rudby',3),
+(8,'Epinal',2,'rugby',3),
 (9,'Paris',4,'hand',5),
 (10,'Toulouse',3,'course',5),
 (11,'Paris',1,'foot_salle',2),

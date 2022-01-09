@@ -31,8 +31,8 @@ ORDER BY Eleves.ElevID ASC; -- optionnel
 
 
 -- "------------------ QUESTION 7 ------------------"
-SELECT COUNT(DISTINCT Eleves.ElevID) AS Nb_eleves -- compte le nombre d'eleves qui ...
-FROM Eleves, Repartition, Activites WHERE Eleves.ElevID=Repartition.ElevID AND Repartition.ActID=Activites.ActID AND Eleves.Ville=Activites.Lieu; -- ont une activite ou ils vivent
+SELECT DISTINCT Eleves.ElevID 
+FROM Eleves, Repartition, Activites WHERE Eleves.ElevID=Repartition.ElevID AND Repartition.ActID=Activites.ActID AND Eleves.Ville=Activites.Lieu; -- les eleves qui ont une activite ou ils vivent
 
 
 -- "------------------ QUESTION 8 ------------------"
@@ -65,7 +65,7 @@ ORDER BY COUNT(Repartition.ActID) DESC, Activites.ActID ASC;
 
 
 --  "------------------ QUESTION 11 ------------------"
-SELECT Classes.Enseignant, COUNT(Eleves.ElevID) AS Nb_eleves
+SELECT Classes.Enseignant
 FROM Classes, Eleves
 WHERE Eleves.ClassID=Classes.ClassID
 GROUP BY Classes.Enseignant
@@ -77,7 +77,7 @@ HAVING COUNT(Eleves.ElevID)>=
 
 
 --  "------------------ QUESTION 12 ------------------"
-SELECT Activites.Theme,AVG(Eleves.Age) AS Moy,MIN(Eleves.Age) AS Min,MAX(Eleves.Age) AS Max,MAX(Eleves.Age)- MIN(Eleves.Age) AS Inter
+SELECT Activites.Theme,AVG(Eleves.Age) AS Moy,MIN(Eleves.Age) AS Min,MAX(Eleves.Age) AS Max,MAX(Eleves.Age)- MIN(Eleves.Age) AS Amplitude
 FROM Repartition,Activites,Eleves WHERE Activites.ActID=Repartition.ActID AND Repartition.ElevID=Eleves.ElevID
 GROUP BY Activites.Theme;
 
