@@ -1,5 +1,35 @@
 USE TD_NOTE;
 
+-- "------------------ QUESTION 3 ------------------"
+SELECT Classes.enseignant, GROUP_CONCAT(Eleve.nom) AS liste_eleve -- create a string of students' name separated by a ","
+FROM Classes, Eleve WHERE Classes.classe_id = Eleve.classe_id
+GROUP BY Classes.enseignant
+ORDER BY Classes.enseignant ASC; -- sort enseignants' name by alphabetical order 
+
+
+-- "------------------ QUESTION 4 ------------------"
+SELECT Activite.jour, Activite.bus, COUNT(Repartition.elevID) AS nb_student
+FROM Activite, Repartition WHERE Activite.actID = Repartition.actID
+GROUP BY Activite.jour, Activite.bus
+ORDER BY Activite.jour ASC, Activite.bus ASC; -- optional
+
+
+-- "------------------ QUESTION 5 ------------------"
+SELECT Activite.jour, Eleve.nom
+FROM Activite, Repartition, Eleve WHERE Activite.actID = Repartition.actID AND Eleve.elevID = Repartition.elevID
+GROUP BY Activite.jour, Eleve.nom
+HAVING COUNT(Activite.actID) >= 2
+ORDER BY Activite.jour ASC; -- optional
+
+
+-- "------------------ QUESTION 6 ------------------"
+SELECT Activite.jour, Eleve.nom
+FROM Activite, Repartition, Eleve WHERE Activite.actID = Repartition.actID AND Eleve.elevID = Repartition.elevID
+GROUP BY Activite.jour, Eleve.nom
+HAVING COUNT(Activite.actID) >= 1
+ORDER BY Activite.jour ASC; -- optional
+
+
 -- "------------------ QUESTION 8 ------------------"
 SELECT Activite.theme,COUNT(Repartition.elevID) AS nb_eleve 
 FROM Repartition,Activite WHERE Repartition.actID=Activite.actID
@@ -64,7 +94,7 @@ GROUP BY C.theme,C.nb_eleve;
 
 
 --  "------------------ QUESTION 14 ------------------"
-SELECT Eleve.elevID,Eleve.nom,Eleve.ville,GROUP_CONCAT(DISTINCT(Activite.lieu)) AS ville_activité
+SELECT Eleve.elevID,Eleve.nom,Eleve.ville,GROUP_CONCAT(DISTINCT(Activite.lieu)) AS ville_activite
 FROM Repartition,Activite,Eleve WHERE Activite.actID=Repartition.actID AND Repartition.elevID=Eleve.elevID 
 AND Eleve.ville!=Activite.lieu
 GROUP BY Eleve.elevID,Eleve.nom,Eleve.ville;
