@@ -1,33 +1,33 @@
-DROP TABLE IF EXISTS `Eleve`;
-CREATE TABLE IF NOT EXISTS `Eleve` (
-  `elevID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nom` varchar(100) NOT NULL,
-  `age` int(10) NOT NULL,
-  `ville` varchar(100) NOT NULL,
-  `classe_id` int(10) NOT NULL,
-  PRIMARY KEY (`elevID`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `Eleves`;
+CREATE TABLE IF NOT EXISTS `Eleves` (
+  `ElevID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Nom` varchar(100) NOT NULL,
+  `Age` int(10) NOT NULL,
+  `Ville` varchar(100) NOT NULL,
+  `ClassID` int(10) NOT NULL,
+  PRIMARY KEY (`ElevID`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8MB4;
 
 DROP TABLE IF EXISTS `Classes`;
 CREATE TABLE IF NOT EXISTS `Classes` (
-  `classe_id` int(10) NOT NULL,
-  `enseignant` varchar(100) NOT NULL,
-  PRIMARY KEY (`classe_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+  `ClassID` int(10) NOT NULL,
+  `Enseignant` varchar(100) NOT NULL,
+  PRIMARY KEY (`ClassID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=UTF8MB4;
 
-DROP TABLE IF EXISTS `Activite`;
-CREATE TABLE IF NOT EXISTS `Activite` (
-  `actID` int(10) NOT NULL,
-  `lieu` varchar(100) NOT NULL,
-  `bus` int(10) NOT NULL,
-  `theme` varchar(100) NOT NULL,
-  `jour` int(10) NOT NULL,
-  PRIMARY KEY (`actID`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `Activites`;
+CREATE TABLE IF NOT EXISTS `Activites` (
+  `ActID` int(10) NOT NULL,
+  `Lieu` varchar(100) NOT NULL,
+  `Bus` int(10) NOT NULL,
+  `Theme` varchar(100) NOT NULL,
+  `Jour` int(10) NOT NULL,
+  PRIMARY KEY (`ActID`)
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=UTF8MB4;
 
 DROP TABLE IF EXISTS `Repartition`;
 CREATE TABLE IF NOT EXISTS `Repartition` (
-  `elevID` int(10) NOT NULL,
-  `actID` int(100) NOT NULL,
-  PRIMARY KEY (`elevID`,`actID`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+  `ElevID` int(10) NOT NULL,
+  `ActID` int(100) NOT NULL,
+  PRIMARY KEY (`ElevID`,`ActID`)
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=UTF8MB4;

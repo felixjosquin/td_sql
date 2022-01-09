@@ -1,4 +1,4 @@
-INSERT INTO `Eleve` ( `nom`, `age`, `ville`, `classe_id`) VALUES
+INSERT INTO `Eleves` ( `Nom`, `Age`, `Ville`, `ClassID`) VALUES
 ( 'Enzo', 21,'LoveTown',1),
 ( 'Ines', 20,'LoveTown',4),
 ( 'Valentin',22, 'Buvilly', 2),
@@ -24,14 +24,14 @@ INSERT INTO `Eleve` ( `nom`, `age`, `ville`, `classe_id`) VALUES
 ( 'Felix', 21, 'Trecon',2),
 ( 'Lucie', 20, 'Montcuq', 1);
 
-INSERT INTO `Classes` (`classe_id`, `enseignant`) VALUES
+INSERT INTO `Classes` (`ClassID`, `Enseignant`) VALUES
 (1, 'Payre'),
 (2, 'Pierre-Etienne'),
 (3, 'Mesh'),
 (4, 'Pierre'),
 (5, 'Benmouffek');
 
-INSERT INTO `Activite` (`actID`, `lieu`,`bus`,`theme`,`jour`) VALUES
+INSERT INTO `Activites` (`ActID`, `Lieu`,`Bus`,`Theme`,`Jour`) VALUES
 (1,'Paris',3,'tennis',2),
 (2,'Marseille',4,'foot',2),
 (3,'Toulouse',3,'echec',3),
@@ -47,7 +47,7 @@ INSERT INTO `Activite` (`actID`, `lieu`,`bus`,`theme`,`jour`) VALUES
 (13,'Epinal',2,'trail',3),
 (14,'Paris',4,'badminton',2);
 
-INSERT INTO `Repartition` (`elevID`, `actID`) VALUES
+INSERT INTO `Repartition` (`ElevID`, `ActID`) VALUES
 (17,14),
 (3,5),
 (7,8),
