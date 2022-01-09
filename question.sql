@@ -8,26 +8,33 @@ ORDER BY Classes.enseignant ASC; -- sort enseignants' name by alphabetical order
 
 
 -- "------------------ QUESTION 4 ------------------"
-SELECT Activite.jour, Activite.bus, COUNT(Repartition.elevID) AS nb_student
+SELECT Activite.jour, Activite.bus, COUNT(Repartition.elevID) AS nb_student -- count the number of students by bus for each day
 FROM Activite, Repartition WHERE Activite.actID = Repartition.actID
 GROUP BY Activite.jour, Activite.bus
 ORDER BY Activite.jour ASC, Activite.bus ASC; -- optional
 
 
 -- "------------------ QUESTION 5 ------------------"
-SELECT Activite.jour, Eleve.nom
+SELECT Activite.jour, Eleve.elevID
 FROM Activite, Repartition, Eleve WHERE Activite.actID = Repartition.actID AND Eleve.elevID = Repartition.elevID
-GROUP BY Activite.jour, Eleve.nom
-HAVING COUNT(Activite.actID) >= 2
+GROUP BY Activite.jour, Eleve.elevID
+HAVING COUNT(Activite.actID) >= 2 -- select students who have more than 2 activities
 ORDER BY Activite.jour ASC; -- optional
 
 
 -- "------------------ QUESTION 6 ------------------"
-SELECT Activite.jour, Eleve.nom
+SELECT Eleve.elevID
 FROM Activite, Repartition, Eleve WHERE Activite.actID = Repartition.actID AND Eleve.elevID = Repartition.elevID
-GROUP BY Activite.jour, Eleve.nom
-HAVING COUNT(Activite.actID) >= 1
-ORDER BY Activite.jour ASC; -- optional
+GROUP BY Eleve.elevID
+HAVING COUNT(DISTINCT Activite.jour) = ( -- student must have activities the same number of distinct days as ...
+    SELECT COUNT(DISTINCT Activite.jour) -- the number of days with activities
+    FROM Activite)
+ORDER BY Eleve.elevID ASC; -- optional
+
+
+-- "------------------ QUESTION 7 ------------------"
+SELECT COUNT(DISTINCT Eleve.elevID) AS nb_student -- count the number of students who have ...
+FROM Eleve, Repartition, Activite WHERE Eleve.elevID=Repartition.elevID AND Repartition.actID=Activite.actID AND Eleve.ville=Activite.lieu; -- an activity where they live
 
 
 -- "------------------ QUESTION 8 ------------------"
